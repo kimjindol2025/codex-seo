@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Codex-native entry point. It keeps the upstream Claude Code layout intact,
+# but gives Codex a stable, repository-relative command without relying on
+# CLAUDE_PLUGIN_ROOT or Claude's plugin runtime.
+repo_root="$(CDPATH= cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd -P)"
+launcher="${repo_root}/scripts/claude-seo"
+
+if [[ ! -x "${launcher}" ]]; then
+  echo "Claude SEO launcher is missing or not executable: ${launcher}" >&2
+  exit 2
+fi
+
+usage() {
+  cat >&2 <<'EOF'
+Usage:
+  scripts/codex-seo setup [--skip-browser]
+  scripts/codex-seo doctor [--json]
+  scripts/codex-seo quick <url> [--agentic]
+  scripts/codex-seo run <script.py> [args...]
+  scripts/codex-seo portability
+
+The natural-language audit orchestration is performed by Codex using
+codex/SKILL.md and the skills/*/SKILL.md files. This command runs the
+deterministic bundled tools.
+EOF
+}
+
+command="${1:-}"
+shift || true
+
+case "${command}" in
+  setup|doctor|run)
+    exec "${launcher}" "${command}" "$@"
+    ;;
+  quick)
+    exec "${launcher}" run codex_quick_audit.py "$@"
+    ;;
+  portability)
+    # This linter only inspects Markdown frontmatter and intentionally works
+    # before the managed SEO runtime has been provisioned.
+    exec python3 "${repo_root}/scripts/portability_check.py" "$@"
+    ;;
+  -h|--help|help|'')
+    usage
+    [[ -n "${command}" ]] && exit 0 || exit 2
+    ;;
+  *)
+    echo "Unknown Codex SEO command: ${command}" >&2
+    usage
+    exit 2
+    ;;
+esac

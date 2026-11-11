@@ -122,6 +122,7 @@ ms-playwright/
 .setup.lock
 
 # Site-specific analysis outputs
+*-audit/
 LOCAL-SEO-ANALYSIS-*.md
 LOCAL-SEO-ANALYSIS-*.html
 GEO-ANALYSIS-*.md

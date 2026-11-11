@@ -1,4 +1,30 @@
-# Claude SEO: Multi-Platform Agent Instructions
+# Claude SEO: Codex and Multi-Platform Agent Instructions
+
+## Codex first
+
+When this repository is opened in Codex, use `codex/SKILL.md` as the entry
+point for SEO work. It maps Claude Code's `/seo` commands to Codex actions and
+uses `scripts/codex-seo` for deterministic tools. The upstream Claude Code
+plugin files remain available for compatibility, but Codex must not depend on
+`${CLAUDE_PLUGIN_ROOT}`, `.claude` settings, or `/plugin` commands.
+
+Examples:
+
+```bash
+./scripts/codex-seo doctor --json
+./scripts/codex-seo quick https://example.com
+./scripts/codex-seo portability
+./scripts/codex-seo run parse_html.py https://example.com
+```
+
+For a website audit, start with `./scripts/codex-seo quick <url>`. Read
+`codex/SKILL.md`, then the smallest relevant `skills/*/SKILL.md` and
+`agents/*.md` files. Use optional APIs only when explicitly requested, and label
+heuristics, environment-dependent warnings, and unavailable data separately.
+SEO answers are two-stage: finish the first technical/page review, then ask the
+user whether to run the second strategy review. Only run the second review after
+an affirmative request; its instructions are in
+`codex/skills/seo-strategy/SKILL.md`.
 
 > For **Cursor**, **Cursor Cloud Agents**, **Google Antigravity**, **Gemini CLI**,
 > **Grok Build**,

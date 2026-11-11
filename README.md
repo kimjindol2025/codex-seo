@@ -4,6 +4,27 @@
   26 sub-skills and 19 specialist agents. MIT licensed.
 -->
 
+## Codex SEO
+
+이 저장소는 Claude Code용 원본 SEO 엔진을 Codex 방식으로 사용할 수 있도록
+정리한 공개 어댑터를 포함합니다.
+
+- **1차 검수**: 페이지 수집·렌더링, 기술 SEO, 메타데이터, Schema, robots,
+  sitemap, 링크와 보안 점검
+- **2차 검수**: 검색 의도, 한국어 키워드, 경쟁 페이지, 검색 스니펫,
+  전환 흐름, E-E-A-T, 콘텐츠 갭, 내부 링크 전략
+- 기본값은 가벼운 1차 검수이며 PageSpeed·GSC·GA4·SERP API는 선택 사항입니다.
+- 휴리스틱, 환경 경고, 확인된 오류, 데이터 부재를 구분합니다.
+
+```bash
+./scripts/codex-seo setup
+./scripts/codex-seo quick https://example.com
+```
+
+1차 결과 후 2차 전략 검수를 요청하면 `codex/skills/seo-strategy/SKILL.md`를
+사용해 SEO 전략까지 이어서 분석합니다. 자세한 Codex 진입점은
+[`codex/SKILL.md`](codex/SKILL.md)와 [`AGENTS.md`](AGENTS.md)를 참고하세요.
+
 <img src="assets/readme/v3/hero.svg" width="1200" height="420" alt="Claude SEO: rank in Google, get cited by AI. Three bots climb from #48 to #1 by fixing crawl, speed, schema, AI access and authority, then Google, ChatGPT, Perplexity, Gemini and Claude cite the site." />
 
 <h1 align="center">Claude SEO</h1>
