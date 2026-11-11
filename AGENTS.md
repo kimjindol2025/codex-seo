@@ -12,7 +12,7 @@ Examples:
 
 ```bash
 ./scripts/codex-seo doctor --json
-./scripts/codex-seo quick https://example.com
+./scripts/codex-seo quick https://example.com --output-dir /home/kim/seo-audits
 ./scripts/codex-seo portability
 ./scripts/codex-seo run parse_html.py https://example.com
 ```
@@ -21,6 +21,9 @@ For a website audit, start with `./scripts/codex-seo quick <url>`. Read
 `codex/SKILL.md`, then the smallest relevant `skills/*/SKILL.md` and
 `agents/*.md` files. Use optional APIs only when explicitly requested, and label
 heuristics, environment-dependent warnings, and unavailable data separately.
+Always save the handoff under the requested output root; each domain gets its
+own `README.md`, phase report, JSON evidence, and sources file. Another Codex
+must read that domain README before continuing.
 SEO answers are two-stage: finish the first technical/page review, then ask the
 user whether to run the second strategy review. Only run the second review after
 an affirmative request; its instructions are in

@@ -63,6 +63,7 @@ Run deterministic tools only through the repository-relative wrapper:
 ./scripts/codex-seo doctor --json
 ./scripts/codex-seo setup
 ./scripts/codex-seo quick https://example.com
+./scripts/codex-seo quick https://example.com --output-dir ./audits
 ./scripts/codex-seo run render_page.py "https://example.com" --mode auto --json
 ```
 
@@ -84,6 +85,33 @@ PageSpeed, GSC, GA4, SERP providers, paid backlink APIs, and full crawling. Add
 
 The quick profile is stage 1 only. It must not be presented as a complete SEO
 strategy review.
+
+## Documentation and handoff
+
+Every audit must be saved under the user-specified output root, separated by
+domain:
+
+```text
+<output-dir>/<domain>/
+  README.md
+  phase-1/
+    REPORT.md
+    audit-data.json
+    sources.md
+  phase-2/                 # created only after a 2차 request
+    REPORT.md
+    strategy-data.json
+    sources.md
+```
+
+Use `--output-dir` when the user names a folder. If no folder is named, use
+`./audits`. The domain folder is the hostname, not a free-form project name.
+`README.md` is the handoff file: another Codex must read it first, then the
+phase report, JSON evidence, and sources. Do not rely on conversation text as
+the only record.
+
+After a 2차 review, update the domain `README.md` with the latest status and
+write all strategy evidence under `phase-2/`; do not overwrite phase 1.
 
 ## Full workflow
 
