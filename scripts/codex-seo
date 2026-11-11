@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Codex-native entry point. It keeps the upstream Claude Code layout intact,
-# but gives Codex a stable, repository-relative command without relying on
-# CLAUDE_PLUGIN_ROOT or Claude's plugin runtime.
+# Codex-native entry point. It uses a stable, repository-relative command and
+# does not depend on a plugin host or external agent runtime.
 repo_root="$(CDPATH= cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd -P)"
-launcher="${repo_root}/scripts/claude-seo"
+launcher="${repo_root}/scripts/codex-seo-runtime"
 
 if [[ ! -x "${launcher}" ]]; then
-  echo "Claude SEO launcher is missing or not executable: ${launcher}" >&2
+  echo "Codex SEO runtime is missing or not executable: ${launcher}" >&2
   exit 2
 fi
 

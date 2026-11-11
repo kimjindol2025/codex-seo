@@ -499,7 +499,7 @@ OPTIONAL: KEYWORDS EVERYWHERE / OPEN PAGERANK (free signup, single-metric fallba
 PREMIUM: DATAFORSEO EXTENSION (paid, most comprehensive)
 ----------------------------------------------------------
   For full commercial-grade backlink data, install the DataForSEO extension:
-    ./extensions/dataforseo/install.sh
+    ./external DataForSEO setup
 
   Provides: 35+ trillion links, real-time updates, toxic scoring,
             anchor text, competitor gap analysis, link velocity.

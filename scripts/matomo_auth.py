@@ -481,7 +481,7 @@ def detect_tier() -> dict:
         "description": "No Matomo credentials",
         "capabilities": [],
         "missing": (
-            "Configure Matomo via extensions/matomo/install.sh to unlock "
+            "Configure Matomo via external Matomo setup to unlock "
             "organic traffic, top landing pages, device and country breakdowns, "
             "and referrer analysis. Works alongside GA4 or as a replacement."
         ),
@@ -561,8 +561,8 @@ TIER 1: MATOMO REPORTING API (one token, your own instance)
   when listed. See SECURITY.md.
 
 VERIFY CONFIGURATION:
-  "${{CLAUDE_PLUGIN_ROOT}}/scripts/claude-seo" run matomo_auth.py --check
-  "${{CLAUDE_PLUGIN_ROOT}}/scripts/claude-seo" run matomo_auth.py --tier
+  "./scripts/codex-seo" run matomo_auth.py --check
+  "./scripts/codex-seo" run matomo_auth.py --tier
 """)
 
 

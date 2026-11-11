@@ -132,7 +132,7 @@ value (`--domain ""`) is always an error.
 ## Step 8: Verify Setup
 
 ```bash
-"${CLAUDE_PLUGIN_ROOT}/scripts/claude-seo" run google_auth.py --check
+"./scripts/codex-seo" run google_auth.py --check
 ```
 
 Expected output at Tier 2 (full):

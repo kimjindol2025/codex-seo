@@ -21,7 +21,7 @@ Discover candidates before reporting a sitemap missing, and read every sitemap
 found in the same run:
 
 ```bash
-"${CLAUDE_PLUGIN_ROOT}/scripts/claude-seo" run sitemap_discovery.py <url> --expand --json
+"./scripts/codex-seo" run sitemap_discovery.py <url> --expand --json
 ```
 
 The helper reads every bounded `Sitemap:` declaration in robots.txt, validates

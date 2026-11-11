@@ -3,6 +3,6 @@ revision = 3
 requires-python = ">=3.11"
 
 [[package]]
-name = "claude-seo"
+name = "codex-seo"
 version = "2.6.0"
 source = { virtual = "." }

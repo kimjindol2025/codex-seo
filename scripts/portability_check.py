@@ -2,7 +2,8 @@
 """
 Cross-platform portability lint for SKILL.md files.
 
-claude-seo skills run under Claude Code, but also Cursor / Cursor Cloud
+Codex SEO skills run under the Codex repository workflow and can also be
+inspected by other agent harnesses.
 Agents / Google Antigravity / Gemini CLI / OpenAI Codex CLI / Cline /
 Aider. Most harnesses share a minimum frontmatter contract:
 
@@ -18,7 +19,7 @@ ignored, not rejected):
   - ``compatibility`` (free text, e.g. "Requires the @ahrefs/mcp MCP server")
   - ``metadata``     (a dict; metadata.version is read by the consistency tests)
 
-The check walks every ``SKILL.md`` under ``skills/`` and ``extensions/``
+The check walks every ``SKILL.md`` under ``skills/``
 and reports portability findings. Severity:
 
   - ``error``: a harness will outright reject the file (missing required
@@ -54,9 +55,9 @@ _FRONTMATTER_RE = re.compile(r"^---\n(.*?)\n---", re.DOTALL)
 
 
 def _find_skill_files() -> list[Path]:
-    """Every SKILL.md under skills/ and extensions/."""
+    """Every SKILL.md under skills/."""
     paths: list[Path] = []
-    for root in ("skills", "extensions"):
+    for root in ("skills",):
         base = REPO_ROOT / root
         if not base.is_dir():
             continue

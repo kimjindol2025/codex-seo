@@ -5,7 +5,7 @@ user-invocable: true
 argument-hint: "[quick|audit|technical|content|schema|sitemap|geo|page|...] [url]"
 license: MIT
 metadata:
-  source: AgriciDaniel/claude-seo
+  source: codex-seo
   adapter: codex
 ---
 
@@ -52,8 +52,8 @@ conversion flow, E-E-A-T, content expansion, internal links, and connected
 Search Console/GA4 data. Clearly separate measured data, sourced observations,
 heuristics, and assumptions.
 
-Claude Code's plugin manifest, `/plugin` commands, and Claude-specific hooks are
-not required by Codex.
+Plugin manifests, plugin commands, and host-specific hooks are not required by
+Codex.
 
 ## Runtime
 
@@ -67,8 +67,7 @@ Run deterministic tools only through the repository-relative wrapper:
 ./scripts/codex-seo run render_page.py "https://example.com" --mode auto --json
 ```
 
-The wrapper resolves its own repository root. Never depend on
-`${CLAUDE_PLUGIN_ROOT}`. Setup creates the project's managed runtime and may
+The wrapper resolves its own repository root. Setup creates the project's managed runtime and may
 install Chromium; ask before running setup if dependencies are not present.
 
 ## Default workflow
@@ -131,7 +130,7 @@ available. If it is not available, run the same specialist workflows inline.
 
 ## Command mapping
 
-| Claude Code command | Codex action |
+| Audit command | Codex action |
 |---|---|
 | `/seo audit <url>` | Run `quick` first; ask whether to continue to stage 2 |
 | `2차 SEO 검수` | Read `codex/skills/seo-strategy/SKILL.md` and run the strategy review |
